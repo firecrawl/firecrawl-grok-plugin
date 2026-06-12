@@ -1,0 +1,21 @@
+{
+  "name": "firecrawl",
+  "version": "1.1.0",
+  "description": "Scrape, search, crawl, map, and extract the web — via the hosted Firecrawl MCP server or the Firecrawl CLI skills.",
+  "author": {
+    "name": "Firecrawl",
+    "url": "https://github.com/firecrawl"
+  },
+  "repository": "https://github.com/firecrawl/firecrawl-grok-plugin",
+  "homepage": "https://firecrawl.dev",
+  "license": "AGPL-3.0",
+  "keywords": [
+    "firecrawl",
+    "scrape",
+    "crawl",
+    "web-search",
+    "markdown",
+    "extract",
+    "mcp"
+  ]
+}
