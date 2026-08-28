@@ -6,6 +6,7 @@ allowed-tools:
   - mcp__firecrawl__firecrawl_scrape
   - mcp__firecrawl__firecrawl_search
   - mcp__firecrawl__firecrawl_search_feedback
+  - mcp__firecrawl__firecrawl_developer_search
   - mcp__firecrawl__firecrawl_map
   - mcp__firecrawl__firecrawl_crawl
   - mcp__firecrawl__firecrawl_check_crawl_status
@@ -36,6 +37,7 @@ This plugin bundles Firecrawl's hosted **MCP server**. When it's connected, pref
 | ----------------------- | -------------------------------------------------------------------- |
 | Scrape a URL            | `firecrawl_scrape`                                                   |
 | Web search              | `firecrawl_search` (+ `firecrawl_search_feedback`)                   |
+| Developer/code search   | `firecrawl_developer_search`                                         |
 | Discover URLs on a site | `firecrawl_map`                                                      |
 | Bulk-crawl a site       | `firecrawl_crawl` (+ `firecrawl_check_crawl_status`)                 |
 | Structured extraction   | `firecrawl_extract` / `firecrawl_agent` (+ `firecrawl_agent_status`) |
@@ -92,6 +94,7 @@ Follow this escalation pattern:
 | Need                        | Command               | When                                                      |
 | --------------------------- | --------------------- | --------------------------------------------------------- |
 | Find pages on a topic       | `search`              | No specific URL yet                                       |
+| Answer a code question      | `developer`           | Library behaviour, API contract, error message, known bug |
 | Get a page's content        | `scrape`              | Have a URL, page is static or JS-rendered                 |
 | Find URLs within a site     | `map`                 | Need to locate a specific subpage                         |
 | Bulk extract a site section | `crawl`               | Need many pages (e.g., all /docs/)                        |
@@ -244,6 +247,7 @@ Use `modes: ["json", "git-diff"]` for **mixed mode**: you get both `diff.json` (
 ## When to Load References
 
 - **Searching the web or finding sources first** -> [firecrawl-search](../firecrawl-search/SKILL.md)
+- **A programming question: library or API behaviour, an error message, a known bug** -> [firecrawl-developer-search](../firecrawl-developer-search/SKILL.md)
 - **Scraping a known URL** -> [firecrawl-scrape](../firecrawl-scrape/SKILL.md)
 - **Finding URLs on a known site** -> [firecrawl-map](../firecrawl-map/SKILL.md)
 - **Bulk extraction from a docs section or site** -> [firecrawl-crawl](../firecrawl-crawl/SKILL.md)
