@@ -3,7 +3,7 @@
     "firecrawl": {
       "type": "http",
       "url": "https://mcp.firecrawl.dev/v2/mcp",
-      "note": "Official Firecrawl hosted MCP server. Uses OAuth — on first connection the agent is prompted to authorize via browser; no API key to paste. Tools: scrape, search, map, crawl, extract, agent, interact, monitor."
+      "note": "Official Firecrawl hosted MCP server. Uses OAuth — on first connection the agent is prompted to authorize via browser; no API key to paste. Tools: scrape, search, developer_search, map, crawl, extract, agent, interact, monitor."
     }
   }
 }

@@ -125,6 +125,7 @@ firecrawl search-feedback "$SEARCH_ID" \
 
 ## See also
 
+- [firecrawl-developer-search](../firecrawl-developer-search/SKILL.md) — programming questions, answered from issues, merged PRs, READMEs, and docs
 - [firecrawl-scrape](../firecrawl-scrape/SKILL.md) — scrape a specific URL
 - [firecrawl-map](../firecrawl-map/SKILL.md) — discover URLs within a site
 - [firecrawl-crawl](../firecrawl-crawl/SKILL.md) — bulk extract from a site

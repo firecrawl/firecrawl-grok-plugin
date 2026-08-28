@@ -2,13 +2,14 @@
 
 Turn any website into clean, LLM-ready markdown or structured data — directly from Grok Build.
 
-This plugin bundles Firecrawl's hosted [MCP server](https://github.com/firecrawl/firecrawl-mcp-server) plus a set of skills, giving Grok Build the ability to scrape, search, crawl, map, extract, and monitor the web. Installing the plugin wires up the MCP automatically — the first web action signs you in through your browser, with no API key to paste.
+This plugin bundles Firecrawl's hosted [MCP server](https://github.com/firecrawl/firecrawl-mcp-server) plus a set of skills, giving Grok Build the ability to scrape, search, crawl, map, extract, and monitor the web, plus search an index of developer sources for code questions. Installing the plugin wires up the MCP automatically — the first web action signs you in through your browser, with no API key to paste.
 
 **The hosted MCP is the primary way this plugin works** — its native `firecrawl_*` tools are the default execution path for every web operation. The [Firecrawl CLI](https://github.com/firecrawl/cli) is an optional fallback, used only when the MCP is unavailable or for local-file workflows (`download`/`parse`) that a remote server can't perform.
 
 ## Features
 
 - **Search** - Web search with optional scraping of results (supports web, news, and image sources)
+- **Developer search** - Answer a code question from the primary source: GitHub issues, merged pull requests, READMEs, and curated documentation sites, returned as matched passages
 - **Scrape** - Extract clean markdown content from any webpage, with JavaScript rendering
 - **Map** - Discover all URLs on a website
 - **Crawl** - Extract content from entire websites
@@ -61,6 +62,12 @@ Scrape https://docs.firecrawl.dev/introduction and summarize the key points
 Map all URLs on https://firecrawl.dev
 ```
 
+**Answer a code question:**
+
+```text
+Why does tokio::select drop futures mid-poll? Check the issues and PRs.
+```
+
 **Research a topic:**
 
 ```text
@@ -74,6 +81,7 @@ By default the plugin uses the bundled hosted MCP. The Firecrawl CLI is only nee
 | Command                    | Description                                                                          |
 | -------------------------- | ------------------------------------------------------------------------------------ |
 | `firecrawl search "query"` | Search the web (supports `--sources`, `--scrape`, `--tbs` for time filters)          |
+| `firecrawl developer "query"` | Search issues, merged PRs, READMEs, and docs for a code question (`--limit`)       |
 | `firecrawl scrape <url>`   | Scrape a single page to markdown                                                     |
 | `firecrawl map <url>`      | Discover all URLs on a site                                                          |
 | `firecrawl interact`       | Interact with a scraped page — click, fill forms, navigate (operates on a scrape ID) |
