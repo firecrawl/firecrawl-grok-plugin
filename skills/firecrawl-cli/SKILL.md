@@ -7,6 +7,7 @@ allowed-tools:
   - mcp__firecrawl__firecrawl_search
   - mcp__firecrawl__firecrawl_search_feedback
   - mcp__firecrawl__firecrawl_developer_search
+  - mcp__firecrawl__firecrawl_find_tools
   - mcp__firecrawl__firecrawl_map
   - mcp__firecrawl__firecrawl_crawl
   - mcp__firecrawl__firecrawl_check_crawl_status
@@ -38,6 +39,7 @@ This plugin bundles Firecrawl's hosted **MCP server**. When it's connected, pref
 | Scrape a URL            | `firecrawl_scrape`                                                   |
 | Web search              | `firecrawl_search` (+ `firecrawl_search_feedback`)                   |
 | Developer/code search   | `firecrawl_developer_search`                                         |
+| Structured data providers (Alexandria) | `firecrawl_search` (source `alexandria`) + `firecrawl_find_tools`, executed by `firecrawl_scrape` |
 | Discover URLs on a site | `firecrawl_map`                                                      |
 | Bulk-crawl a site       | `firecrawl_crawl` (+ `firecrawl_check_crawl_status`)                 |
 | Structured extraction   | `firecrawl_extract` / `firecrawl_agent` (+ `firecrawl_agent_status`) |
