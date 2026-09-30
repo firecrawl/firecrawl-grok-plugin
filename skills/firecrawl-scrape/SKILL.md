@@ -16,6 +16,10 @@ This plugin bundles the Firecrawl MCP server. When it's connected, prefer the na
 
 Scrape one or more URLs. Returns clean, LLM-optimized markdown. Multiple URLs are scraped concurrently.
 
+## Execute an Alexandria capability
+
+`firecrawl_scrape` also runs **Alexandria** data providers. Pass `alexandria` instead of `url` (exactly one of the two) with the `provider`, `capability`, and `options` that discovery returned, optionally as an array of up to ten calls, and read the results in `data.alexandria[]`. Check each item for an `error` with a `code`; a provider error never fails the batch as a whole. Discovery and contracts come from `firecrawl_search` (source `alexandria`) and `firecrawl_find_tools`; see [firecrawl-alexandria](../firecrawl-alexandria/SKILL.md) for the flow, pricing, and provider terms. In the CLI the same call is `firecrawl scrape <provider>/<capability> --options '<json>'`.
+
 ## When to use
 
 - You have a specific URL and want its content
@@ -69,6 +73,7 @@ firecrawl scrape "https://example.com/pricing" --query "What is the enterprise p
 
 ## See also
 
+- [firecrawl-alexandria](../firecrawl-alexandria/SKILL.md) — execute catalogued data providers through scrape
 - [firecrawl-search](../firecrawl-search/SKILL.md) — find pages when you don't have a URL
 - [firecrawl-interact](../firecrawl-interact/SKILL.md) — when scrape can't get the content, use `interact` to click, fill forms, etc.
 - [firecrawl-download](../firecrawl-download/SKILL.md) — bulk download an entire site to local files

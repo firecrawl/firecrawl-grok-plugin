@@ -5,6 +5,7 @@ description: |
 allowed-tools:
   - mcp__firecrawl__firecrawl_search
   - mcp__firecrawl__firecrawl_search_feedback
+  - mcp__firecrawl__firecrawl_find_tools
   - Bash(firecrawl *)
   - Bash(npx firecrawl *)
 ---
@@ -16,6 +17,10 @@ allowed-tools:
 This plugin bundles the Firecrawl MCP server. When it's connected, prefer the native **`firecrawl_search`** tool over the CLI (and **`firecrawl_search_feedback`** to report result quality) — it needs no local install and authenticates through the plugin's one-time browser sign-in. The `firecrawl` CLI commands below are the fallback for when the MCP isn't connected.
 
 Web search with optional content scraping. Returns search results as JSON, optionally with full page content.
+
+## Structured data via Alexandria
+
+Signed-in search also returns matching **Alexandria** providers (official APIs, licensed publishers, Firecrawl indexes) in `data.tools` when you add `"sources": ["web", "alexandria"]` to `firecrawl_search`. A match is a lead, not data: read its contract with `firecrawl_find_tools`, then execute it with `firecrawl_scrape` and an `alexandria` body. Discovery is free; execution is billed at the capability's price. The full flow, the terms handling, and the CLI equivalents live in [firecrawl-alexandria](../firecrawl-alexandria/SKILL.md). Use it when the user needs records, listings, series, or a dataset rather than page content.
 
 ## When to use
 
@@ -126,6 +131,7 @@ firecrawl search-feedback "$SEARCH_ID" \
 ## See also
 
 - [firecrawl-developer-search](../firecrawl-developer-search/SKILL.md) — programming questions, answered from issues, merged PRs, READMEs, and docs
+- [firecrawl-alexandria](../firecrawl-alexandria/SKILL.md) — structured data from catalogued providers
 - [firecrawl-scrape](../firecrawl-scrape/SKILL.md) — scrape a specific URL
 - [firecrawl-map](../firecrawl-map/SKILL.md) — discover URLs within a site
 - [firecrawl-crawl](../firecrawl-crawl/SKILL.md) — bulk extract from a site
