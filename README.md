@@ -1,6 +1,6 @@
 # Firecrawl Plugin for Grok Build
 
-Turn any website into clean, LLM-ready markdown or structured data — directly from Grok Build.
+The context API for AI agents, in Grok Build: search, scrape, and interact with the web, and get back clean Markdown or structured data.
 
 This plugin bundles Firecrawl's hosted [MCP server](https://github.com/firecrawl/firecrawl-mcp-server) plus a set of skills, giving Grok Build the ability to scrape, search, crawl, map, extract, and monitor the web, run Alexandria data providers for structured records, and search an index of developer sources for code questions. Installing the plugin wires up the MCP automatically — the first web action signs you in through your browser, with no API key to paste.
 
