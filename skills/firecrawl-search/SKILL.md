@@ -6,6 +6,11 @@ allowed-tools:
   - mcp__firecrawl__firecrawl_search
   - mcp__firecrawl__firecrawl_search_feedback
   - mcp__firecrawl__firecrawl_find_tools
+  - mcp__firecrawl__firecrawl_gov_search
+  - mcp__firecrawl__firecrawl_research_search_papers
+  - mcp__firecrawl__firecrawl_research_inspect_paper
+  - mcp__firecrawl__firecrawl_research_related_papers
+  - mcp__firecrawl__firecrawl_research_read_paper
   - Bash(firecrawl *)
   - Bash(npx firecrawl *)
 ---
@@ -21,6 +26,21 @@ Web search with optional content scraping. Returns search results as JSON, optio
 ## Structured data via Alexandria
 
 Signed-in search also returns matching **Alexandria** providers (official APIs, licensed publishers, Firecrawl indexes) in `data.tools` when you add `"sources": ["web", "alexandria"]` to `firecrawl_search`. A match is a lead, not data: read its contract with `firecrawl_find_tools`, then execute it with `firecrawl_scrape` and an `alexandria` body. Discovery is free; execution is billed at the capability's price. The full flow, the terms handling, and the CLI equivalents live in [firecrawl-alexandria](../firecrawl-alexandria/SKILL.md). Use it when the user needs records, listings, series, or a dataset rather than page content.
+
+## Legal text and scientific papers
+
+Two MCP indexes answer from primary sources instead of the open web:
+
+- **Law and regulation:** `firecrawl_gov_search` searches US federal, state, and local statutes, regulations, codes, court opinions, and other government publications. Use it when the answer needs the governing text, such as a license, privacy, or compliance question.
+- **Scientific papers:** `firecrawl_research_search_papers` finds papers (biomedical, arXiv, and other scientific sources) from a natural-language query. `firecrawl_research_inspect_paper` reads canonical metadata for a known paper ID (arXiv, PMC, PMID, DOI), `firecrawl_research_related_papers` follows citations from `seed_ids`, and `firecrawl_research_read_paper` returns full-text passages that answer a `question`. Cite paper URLs or IDs, and say when an answer rests on the abstract alone.
+
+Without the MCP, the CLI runs the same indexes:
+
+```bash
+firecrawl gov "california consumer privacy act data deletion" -o .firecrawl/gov.json --json
+firecrawl research search-papers "retrieval augmented generation evaluation" -o .firecrawl/papers.json --json
+firecrawl research read-paper arxiv:1706.03762 --question "How is attention computed?"
+```
 
 ## When to use
 

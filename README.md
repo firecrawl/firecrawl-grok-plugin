@@ -2,9 +2,9 @@
 
 The context API for AI agents, in Grok Build: search, scrape, and interact with the web, and get back clean Markdown or structured data.
 
-This plugin bundles Firecrawl's hosted [MCP server](https://github.com/firecrawl/firecrawl-mcp-server) plus a set of skills, giving Grok Build the ability to scrape, search, crawl, map, extract, and monitor the web, run Alexandria data providers for structured records, and search an index of developer sources for code questions. Installing the plugin wires up the MCP automatically — the first web action signs you in through your browser, with no API key to paste.
+This plugin bundles Firecrawl's hosted [MCP server](https://github.com/firecrawl/firecrawl-mcp-server) plus a set of skills, giving Grok Build the ability to scrape, search, crawl, map, extract, and monitor the web, parse documents, run Alexandria data providers for structured records, and search indexes of developer sources, primary legal text, and scientific papers. Installing the plugin wires up the MCP automatically — the first web action signs you in through your browser, with no API key to paste.
 
-**The hosted MCP is the primary way this plugin works** — its native `firecrawl_*` tools are the default execution path for every web operation. The [Firecrawl CLI](https://github.com/firecrawl/cli) is an optional fallback, used only when the MCP is unavailable or for local-file workflows (`download`/`parse`) that a remote server can't perform.
+**The hosted MCP is the primary way this plugin works** — its native `firecrawl_*` tools are the default execution path for every web operation. The [Firecrawl CLI](https://github.com/firecrawl/cli) is an optional fallback, used only when the MCP is unavailable or to download a site to local files, which a remote server can't do.
 
 ## Features
 
@@ -15,6 +15,9 @@ This plugin bundles Firecrawl's hosted [MCP server](https://github.com/firecrawl
 - **Map** - Discover all URLs on a website
 - **Crawl** - Extract content from entire websites
 - **Interact** - Drive a live browser session on a scraped page — click, fill forms, navigate flows, handle pagination/infinite scroll, and log in
+- **Parse** - Turn a local PDF, Word, spreadsheet, or HTML file into Markdown, a summary, or structured data
+- **Legal and paper research** - Search US statutes, regulations, and court opinions, and search, inspect, and read scientific papers
+- **Monitor** - Watch pages for changes and get notified by webhook or email
 
 All operations include automatic JavaScript rendering, anti-bot handling, and proxy rotation.
 
@@ -30,16 +33,16 @@ The first time Grok uses a Firecrawl tool, you'll be prompted to authorize in yo
 
 **That's it.** No global npm install, no manual key management.
 
-### Optional: Firecrawl CLI (for local-file parsing)
+### Optional: Firecrawl CLI (fallback and downloads)
 
-The bundled MCP covers the full remote toolset (scrape, search, find_tools, crawl, map, extract, agent, interact, monitor). The one capability it can't provide is parsing files on your local disk — for that, install the [Firecrawl CLI](https://github.com/firecrawl/cli):
+The bundled MCP covers the full toolset (scrape, search, find_tools, crawl, map, agent, interact, parse, monitor, gov and paper search, feedback, and credit usage). Local files reach `parse` through a one-time upload. The one thing it can't do is save a whole site to your disk; for that, or when the MCP isn't connected, install the [Firecrawl CLI](https://github.com/firecrawl/cli):
 
 ```bash
 npm install -g firecrawl-cli
 firecrawl login --browser            # or: firecrawl login --api-key "fc-YOUR-API-KEY"
 ```
 
-The `firecrawl-cli` and `firecrawl-parse` skills use the CLI when present. **Get your free API key at:** https://firecrawl.dev/app/api-keys
+The skills fall back to the CLI when the MCP isn't connected. **Get your free API key at:** https://firecrawl.dev/app/api-keys
 
 ## Usage
 
@@ -83,7 +86,7 @@ Research the latest developments in AI agents and give me a summary
 
 ### CLI Commands (optional fallback)
 
-By default the plugin uses the bundled hosted MCP. The Firecrawl CLI is only needed when the MCP is unavailable or for local-file workflows (`download`/`parse`). When used, it runs these commands:
+By default the plugin uses the bundled hosted MCP. The Firecrawl CLI is only needed when the MCP is unavailable or to download a site to files. When used, it runs these commands:
 
 | Command                    | Description                                                                          |
 | -------------------------- | ------------------------------------------------------------------------------------ |
@@ -131,6 +134,20 @@ See the [Firecrawl documentation](https://docs.firecrawl.dev) for self-hosting i
 - [Firecrawl CLI Repository](https://github.com/firecrawl/cli)
 - [API Reference](https://docs.firecrawl.dev/api-reference)
 - [Get API Key](https://firecrawl.dev)
+
+## Development
+
+Run the checks with Node 22 or later:
+
+```bash
+node --test
+```
+
+They check the manifest, skill frontmatter, relative links between skills, that the bundled MCP connection carries no credentials, and that skills name exactly the tools the hosted MCP serves. That tool list is vendored in `tests/mcp-tools.json`; refresh it from [firecrawl-mcp-server](https://github.com/firecrawl/firecrawl-mcp-server) with `node scripts/refresh-mcp-tools.mjs`, then update the skills until the checks pass.
+
+## Releasing
+
+Bumping `version` in `.grok-plugin/plugin.json` is the release. The Grok plugin marketplace pins this repository, and xAI's bot moves the pin when the version changes, so merging a version bump ships everything on `main` to users. A change merged without a bump stays unreleased until the next one. Bump the version in the same PR as the change that should go out.
 
 ## License
 

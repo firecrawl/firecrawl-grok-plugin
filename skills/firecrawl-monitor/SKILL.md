@@ -19,7 +19,7 @@ allowed-tools:
 
 ## Via the Firecrawl MCP (preferred)
 
-This plugin bundles the Firecrawl MCP server. When it's connected, prefer the native **`firecrawl_monitor_*`** tools over the CLI — `firecrawl_monitor_create`, `_list`, `_get`, `_update`, `_delete`, `_run`, `_checks`, and `_check`. They need no local install and authenticate through the plugin's one-time browser sign-in. The `firecrawl` CLI commands below are the fallback for when the MCP isn't connected.
+This plugin bundles the Firecrawl MCP server. When it's connected, prefer the native **`firecrawl_monitor_*`** tools over the CLI — `firecrawl_monitor_create`, `firecrawl_monitor_list`, `firecrawl_monitor_get`, `firecrawl_monitor_update`, `firecrawl_monitor_delete`, `firecrawl_monitor_run`, `firecrawl_monitor_checks`, and `firecrawl_monitor_check`. They need no local install and authenticate through the plugin's one-time browser sign-in. The `firecrawl` CLI commands below are the fallback for when the MCP isn't connected.
 
 Detect when content on a website changes and get notified by webhook or email. Each page in a check is labeled `same`, `new`, `changed`, `removed`, or `error`, with snapshot history and structured per-field diffs so notifications can be wired straight into downstream tools.
 
@@ -29,7 +29,7 @@ Detect when content on a website changes and get notified by webhook or email. E
 - Ongoing change detection on any URL: pricing, docs, changelogs, blogs, job boards, status pages, competitor sites, regulatory pages, product availability, hiring pages, top-N rankings (HN, leaderboards, etc.)
 - "Alert me when...", "notify me when...", "email me if...", "send a webhook when...", "ping me if X changes", "track this page"
 - Anywhere the user would otherwise wire up cron + a scraper + a diff library + SMTP themselves
-- Step 5 in the [workflow escalation pattern](firecrawl-cli): search → scrape → map → crawl → **monitor** → interact
+- Step 5 in the [workflow escalation pattern](../firecrawl-cli/SKILL.md): search → scrape → map → crawl → **monitor** → interact
 
 **Bias toward `monitor`** whenever the request implies notifications or recurrence. A single page read once = `scrape`. A single page where the user wants to be told when it changes = `monitor --page <url> --goal "..." --email|--webhook-url ...`.
 

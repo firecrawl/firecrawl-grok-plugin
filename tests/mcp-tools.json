@@ -1,0 +1,37 @@
+{
+  "source": {
+    "repo": "firecrawl/firecrawl-mcp-server",
+    "path": "tests/contract-snapshots/hosted-full.json",
+    "commit": "7b6791faae3c7fefd18604fa5fcbd331d47dca73"
+  },
+  "tools": [
+    "firecrawl_scrape",
+    "firecrawl_map",
+    "firecrawl_search",
+    "firecrawl_find_tools",
+    "firecrawl_search_feedback",
+    "firecrawl_feedback",
+    "firecrawl_crawl",
+    "firecrawl_check_crawl_status",
+    "firecrawl_agent",
+    "firecrawl_agent_status",
+    "firecrawl_interact",
+    "firecrawl_interact_stop",
+    "firecrawl_parse",
+    "firecrawl_monitor_create",
+    "firecrawl_monitor_list",
+    "firecrawl_monitor_get",
+    "firecrawl_monitor_update",
+    "firecrawl_monitor_delete",
+    "firecrawl_monitor_run",
+    "firecrawl_monitor_checks",
+    "firecrawl_monitor_check",
+    "firecrawl_research_search_papers",
+    "firecrawl_research_inspect_paper",
+    "firecrawl_research_related_papers",
+    "firecrawl_research_read_paper",
+    "firecrawl_developer_search",
+    "firecrawl_gov_search",
+    "firecrawl_credit_usage"
+  ]
+}
