@@ -22,7 +22,7 @@ Interact with scraped pages in a live browser session. Scrape a page first, then
 - Content requires interaction: clicks, form fills, pagination, login
 - `scrape` failed because content is behind JavaScript interaction
 - You need to navigate a multi-step flow
-- Last resort in the [workflow escalation pattern](firecrawl-cli): search → scrape → map → crawl → **interact**
+- Last resort in the [workflow escalation pattern](../firecrawl-cli/SKILL.md): search → scrape → map → crawl → **interact**
 - **Never use interact for web searches** — use `search` instead
 
 ## Quick start

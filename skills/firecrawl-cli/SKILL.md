@@ -11,7 +11,6 @@ allowed-tools:
   - mcp__firecrawl__firecrawl_map
   - mcp__firecrawl__firecrawl_crawl
   - mcp__firecrawl__firecrawl_check_crawl_status
-  - mcp__firecrawl__firecrawl_extract
   - mcp__firecrawl__firecrawl_agent
   - mcp__firecrawl__firecrawl_agent_status
   - mcp__firecrawl__firecrawl_interact
@@ -24,6 +23,14 @@ allowed-tools:
   - mcp__firecrawl__firecrawl_monitor_run
   - mcp__firecrawl__firecrawl_monitor_checks
   - mcp__firecrawl__firecrawl_monitor_check
+  - mcp__firecrawl__firecrawl_parse
+  - mcp__firecrawl__firecrawl_gov_search
+  - mcp__firecrawl__firecrawl_research_search_papers
+  - mcp__firecrawl__firecrawl_research_inspect_paper
+  - mcp__firecrawl__firecrawl_research_related_papers
+  - mcp__firecrawl__firecrawl_research_read_paper
+  - mcp__firecrawl__firecrawl_feedback
+  - mcp__firecrawl__firecrawl_credit_usage
   - Bash(firecrawl *)
   - Bash(npx firecrawl *)
 ---
@@ -42,11 +49,16 @@ This plugin bundles Firecrawl's hosted **MCP server**. When it's connected, pref
 | Structured data providers (Alexandria) | `firecrawl_search` (source `alexandria`) + `firecrawl_find_tools`, executed by `firecrawl_scrape` |
 | Discover URLs on a site | `firecrawl_map`                                                      |
 | Bulk-crawl a site       | `firecrawl_crawl` (+ `firecrawl_check_crawl_status`)                 |
-| Structured extraction   | `firecrawl_extract` / `firecrawl_agent` (+ `firecrawl_agent_status`) |
+| Structured extraction   | `firecrawl_scrape` with a JSON format, or `firecrawl_agent` (+ `firecrawl_agent_status`) when the URLs aren't known |
 | Interact with a page    | `firecrawl_interact` (+ `firecrawl_interact_stop`)                   |
-| Watch pages for changes | `firecrawl_monitor_*`                                                |
+| Watch pages for changes | `firecrawl_monitor_*` (see [firecrawl-monitor](../firecrawl-monitor/SKILL.md)) |
+| Parse a local document  | `firecrawl_parse` (upload in two calls, see [firecrawl-parse](../firecrawl-parse/SKILL.md)) |
+| Law and regulation      | `firecrawl_gov_search`                                               |
+| Scientific papers       | `firecrawl_research_*` (see [firecrawl-search](../firecrawl-search/SKILL.md)) |
+| Report scrape, parse, map, or Alexandria quality | `firecrawl_feedback`                    |
+| Credit balance and usage | `firecrawl_credit_usage`                                            |
 
-The `firecrawl` **CLI** (commands below) is the fallback when the MCP isn't connected, and is **required** for local-filesystem operations the hosted MCP can't do: **download** (save a site to files) and **parse** (read a local PDF/DOCX/etc.).
+The `firecrawl` **CLI** (commands below) is the fallback when the MCP isn't connected, and is **required** for **download** (saving a site as local files), which the hosted MCP can't do.
 
 Search, scrape, and interact with the web. Returns clean markdown optimized for LLM context windows.
 
@@ -334,6 +346,8 @@ wait
 For interact, scrape multiple pages and interact with each independently using their scrape IDs.
 
 ## Credit Usage
+
+With the MCP, call `firecrawl_credit_usage` (`view: "current"` for the balance, `"historical"` for usage per period). With the CLI:
 
 ```bash
 firecrawl credit-usage

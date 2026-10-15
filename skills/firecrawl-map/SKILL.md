@@ -20,7 +20,7 @@ Discover URLs on a site. Use `--search` to find a specific page within a large s
 
 - You need to find a specific subpage on a large site
 - You want a list of all URLs on a site before scraping or crawling
-- Step 3 in the [workflow escalation pattern](firecrawl-cli): search → scrape → **map** → crawl → interact
+- Step 3 in the [workflow escalation pattern](../firecrawl-cli/SKILL.md): search → scrape → **map** → crawl → interact
 
 ## Quick start
 
