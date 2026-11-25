@@ -1,7 +1,7 @@
 {
   "name": "firecrawl",
   "version": "1.3.2",
-  "description": "The context API for AI agents. Search the live web, scrape any page into clean Markdown or structured data, and interact with dynamic pages, plus crawl, map, monitor, developer search, and Alexandria data providers, through the hosted Firecrawl MCP server or the Firecrawl CLI skills.",
+  "description": "Search the live web, scrape any page into clean Markdown or structured data, and interact with dynamic pages, plus crawl, map, monitor, developer search, and Firecrawl Alexandria data providers, through the hosted Firecrawl MCP server or the Firecrawl CLI skills.",
   "author": {
     "name": "Firecrawl",
     "url": "https://github.com/firecrawl"
